@@ -1,4 +1,6 @@
 import { Component } from '@angular/core';
+import { AlertController,ToastController } from '@ionic/angular';
+import { ListaService } from '../lista.service';
 
 @Component({
   selector: 'app-tab1',
