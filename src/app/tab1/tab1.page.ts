@@ -10,6 +10,41 @@ import { ListaService } from '../lista.service';
 })
 export class Tab1Page {
 
-  constructor() {}
+  constructor(public alert: AlertController, 
+    public toastController: ToastController,
+    public listaService:ListaService,
+  ) {}
+  async AgregarListaAct(){
+    let alert  = this.alert.create(
+      {
+        header: "Agregar Lista",
+        inputs:[{
+          type:"text", name:"titulo",placeholder:"Ingresar el nombre de la lista"
+        }],
+        buttons:[{
+          text:'Cancelar', role: 'cancelar',handler:(date:any)=>{
+            console.log("Cancelado")
+          }
+        },{
+          text:"Crear",
+          handler:(data:any)=>{
+            let valido:boolean = this.validarInput(data);
+          }
+        }]}
+    );(await alert).present();
+  }
+  validarInput(input:any){
+    if(input && input.titulo){ return true;}
+    this.presentToast("Debe de ingresar un valor");
+    console.log(" Debe de ingresar un Valor ");
+    return false;
+  }
 
+  async presentToast(mensaje: string){
+    let toast= await this.toastController.create({
+      message:mensaje,
+      duration:2000
+    });
+    toast.present();
+  }
 }
