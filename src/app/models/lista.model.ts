@@ -1,4 +1,4 @@
-import { Actividad } from '@./actividad.model';
+import { Actividad } from './actividad.model';
 export class Lista{
     id: number=0;
     titulo: string='';

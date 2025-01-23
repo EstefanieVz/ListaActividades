@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 import { AlertController,ToastController } from '@ionic/angular';
-import { ListaService } from '../lista.service';
+import { ListaService } from '../services/lista.service';
 
 @Component({
   selector: 'app-tab1',
@@ -29,6 +29,11 @@ export class Tab1Page {
           text:"Crear",
           handler:(data:any)=>{
             let valido:boolean = this.validarInput(data);
+            if(valido){
+              let wasCreated = this.listaService.crearLista(data.titulo);
+              this.presentToast("La lista se creo correctamente");
+            }
+            console.log(data);
           }
         }]}
     );(await alert).present();
