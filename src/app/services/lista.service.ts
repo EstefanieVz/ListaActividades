@@ -1,11 +1,14 @@
 import { Injectable } from '@angular/core';
+import { Lista } from '../models/lista.model';
 
 @Injectable({
   providedIn: 'root'
 })
 export class ListaService {
   public listas: any []=[];
-  constructor() { }
+  constructor() { 
+    this.cargarStorage();
+  }
   crearLista(nombreLista: string){ //Método parametrizado
     let ObjLista = {
       id:0, 
@@ -23,7 +26,23 @@ export class ListaService {
     let stringListas: string = JSON.stringify(this.listas);
     localStorage.setItem('listas',stringListas);
   }
-  borrarLista(){}
-  editarLista(){}
+  cargarStorage(){
+    const listaStorage:any=localStorage.getItem('listas');
+    if(listaStorage == null){
+      return
+    }
+    let ObjLista = JSON.parse(listaStorage);
+    this.listas=ObjLista;
+  }
+  editarLista(Lista: Lista){
+    let MathLista = this.listas.filter((item:any)=>item.id===Lista.id);
+    MathLista.titulo = Lista.titulo;
+    this.guardarStorage();
+  }
+  borrarLista(Lista: Lista){
+    let newListas = this.listas.filter((item:any)=>item.id !== Lista.id);
+    this.listas=newListas;
+    this.guardarStorage();
+  }
   mostrarLista(){}
 }

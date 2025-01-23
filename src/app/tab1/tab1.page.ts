@@ -52,4 +52,10 @@ export class Tab1Page {
     });
     toast.present();
   }
+  borrarLista(){
+    this.listaService.borrarLista();
+  }
+  editarLista(){
+    this.listaService.editarLista();
+  }
 }
