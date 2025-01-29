@@ -1,0 +1,33 @@
+<ion-header [translucent]="true">
+  <ion-toolbar>
+    <ion-title>
+      Por hacer
+    </ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content [fullscreen]="true">
+  <ion-list>
+    <ion-item-sliding *ngFor="let item of listaService.listas">
+      <ion-item (click)="listaSeleccionada(item)">
+        <ion-label>{{item.titulo}}</ion-label>
+      </ion-item>
+      <ion-item-options side="start">   
+          <ion-item-option color="warning" (click)="editarLista(item)">Editar</ion-item-option>
+      </ion-item-options>
+
+    <ion-item-options side="end">   
+      <ion-item-option color="danger" (click)="borrarLista(item)">Eliminar</ion-item-option>
+  </ion-item-options>
+
+    </ion-item-sliding>
+  </ion-list>
+
+  <ion-fab vertical="bottom" horizontal="end" slot="fixed">
+    <ion-fab-button (click)="AgregarListaAct()">
+      <ion-icon name="add-outline">
+        
+      </ion-icon>
+    </ion-fab-button>
+  </ion-fab>
+</ion-content>
