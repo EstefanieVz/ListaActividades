@@ -7,6 +7,9 @@
 </ion-header>
 
 <ion-content [fullscreen]="true">
+<app-listas></app-listas>
+  <!--
+ 
   <ion-list>
     <ion-item-sliding *ngFor="let item of listaService.listas">
       <ion-item (click)="listaSeleccionada(item)">
@@ -22,7 +25,7 @@
 
     </ion-item-sliding>
   </ion-list>
-
+ -->
   <ion-fab vertical="bottom" horizontal="end" slot="fixed">
     <ion-fab-button (click)="AgregarListaAct()">
       <ion-icon name="add-outline">

@@ -56,50 +56,5 @@ export class Tab1Page {
     });
     toast.present();
   }
-  borrarLista(item:Lista){
-    this.listaService.borrarLista(item);
-    console.log("Borrado ", item);
-  }
-  editarLista(item:Lista){
-    this.editarLista2(item);
-    console.log("Editar");
 
-  }
-
-  
-async editarLista2(listaEditar:Lista){
-
-  let alert  = this.alert.create(
-    {
-      header: "Editar Lista",
-      inputs:[{
-        type:"text", name:"titulo",placeholder:"Ingresar el nombre de la lista"
-      }],
-      buttons:[{
-        text:'Cancelar', role: 'cancelar',handler:(date:any)=>{
-          console.log("Cancelado")
-        }
-      },{
-        text:"Editar",
-        handler:(data:any)=>{
-          let valido:boolean = this.validarInput(data);
-          if(valido){
-            let titulo = data.titulo;
-            listaEditar.titulo = titulo;
-            this.listaService.editarLista(data.titulo);
-            this.presentToast("Lista editada correctamente");
-          }
-          console.log(data);
-        }
-      }]}
-  );
-  (await alert).present();
-}
-
-  listaSeleccionada(listaItem:Lista)
-  {
-console.log(listaItem);
-const URL = "/detalle/" + listaItem.id;
-this.router.navigateByUrl(URL);
-  }
 }
