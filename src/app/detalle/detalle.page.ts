@@ -45,7 +45,7 @@ nombreItem:string='';
     this.EditarAct(actividad);
   }
 
-  EditarAct(actividad:Actividad){
+  async EditarAct(actividad:Actividad){
     let alert=this.alerta.create({
       header:"  Editar Actividad",
       inputs:[{
@@ -65,12 +65,14 @@ nombreItem:string='';
           let valido:boolean=this.validarInput(data);
           if(valido){
             let descripcion = data.nActividad;
+            actividad.titulo=descripcion;
             actividad.descripcion=descripcion;
             this.listaServices.guardarStorage();
           }
         }
       }]
     });
+    (await alert).present();
   }
 
   cambioCheck(actividad:Actividad){
@@ -91,7 +93,7 @@ nombreItem:string='';
     this.listaServices.guardarStorage();
   }
   validarInput(input:any){
-    if(input && input.titulo){ return true;}
+    if(input && input.nActividad){ return true;}
     this.presentToast("Debe de ingresar un valor");
     console.log(" Debe de ingresar un Valor ");
     return false;
