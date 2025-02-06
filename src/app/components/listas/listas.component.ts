@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Input} from '@angular/core';
 import { Router } from '@angular/router';
 import { AlertController, ToastController } from '@ionic/angular';
 import { Lista } from 'src/app/models/lista.model';
@@ -11,6 +11,7 @@ import { ListaService } from 'src/app/services/lista.service';
   standalone:false
 })
 export class ListasComponent  implements OnInit {
+  @Input() tipo:string='';
 
   constructor(public listaService: ListaService,public alert: AlertController,public toastController: ToastController,private router:Router) { }
 

@@ -4,6 +4,7 @@ import { ListasComponent } from './listas/listas.component';
 import { IonicModule } from '@ionic/angular';
 import { FormsModule } from '@angular/forms';
 import { ListaService } from '../services/lista.service';
+import { PipesModule } from '../pipes/pipe/pipes.module';
 
 
 
@@ -12,7 +13,8 @@ import { ListaService } from '../services/lista.service';
   imports: [
     IonicModule,
     FormsModule,
-    CommonModule
+    CommonModule,
+    PipesModule
   ],
   exports:[ListasComponent]
 })

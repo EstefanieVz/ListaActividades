@@ -57,4 +57,10 @@ export class Tab1Page {
     toast.present();
   }
 
+  listaSeleccionada(listaItem:Lista){
+    console.log(listaItem);
+    const URL="/detalle"+ listaItem.id;
+    this.router.navigateByUrl(URL);
+  }
+
 }
